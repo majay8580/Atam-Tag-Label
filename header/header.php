@@ -23,10 +23,10 @@
     <link href="../vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
     <!-- ../Vendor CSS-->
-    <link href="../vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <!-- <link href="../vendor/animsition/animsition.min.css" rel="stylesheet" media="all"> -->
     <link href="../vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="../vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="../vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <!-- <link href="../vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="../vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all"> -->
     <link href="../vendor/slick/slick.css" rel="stylesheet" media="all">
     <link href="../vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="../vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
@@ -37,7 +37,7 @@
 
 </head>
 
-<body class="animsition">
+<body>
     <div class="page-wrapper">
 <header class="header-desktop3 d-none d-lg-block">
             <div class="section__content section__content--p35">
@@ -63,10 +63,14 @@
                                     <span class="bot-line"></span>Master</a>
                                      <ul class="header3-sub-list list-unstyled">
                                     <li>
-                                        <a href="master/master_party.php">Party</a>
+                                        <a href="../master/master_party.php">Party</a>
                                     </li>
                                     <li>
-                                        <a href="#">Sheets</a>
+                                        <a href="../master/master_Sheet.php">Sheet</a>
+                
+                                    </li>
+                                    <li>
+                                        <a href="../master/master_Size.php">Size</a>
                                     </li>
                                     
                                 </ul>
@@ -297,7 +301,10 @@
                                     <a href="master/master_party.php">Party</a>
                                 </li>
                                 <li>
-                                    <a href="#">Sheet</a>
+                                    <a href="../master/master_Sheet.php">Sheet</a>
+                                </li>
+                                <li>
+                                    <a href="../master/master_Size.php">Size</a>
                                 </li>
                             </ul>
                         </li>

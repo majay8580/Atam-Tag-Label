@@ -61,6 +61,8 @@ input[type='button'] {
     cursor: pointer;
 }
 
+
+
 button:focus,
 input:focus,
 textarea:focus {
@@ -973,7 +975,7 @@ section {
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
-    background: #4272d7;
+    background: #db9718;
 }
 
 .select2-container--default.select2-container--open.select2-container--below .select2-selection--single,
@@ -1328,6 +1330,12 @@ section {
     align-items: center;
 }
 
+.card-footer {
+    padding: .75rem 1.25rem;
+    background-color: white !important;
+    border-top: 1px solid rgba(0,0,0,.125);
+}
+
 .noti-wrap .noti__item:last-child {
     margin-right: 50px;
 }
@@ -1541,7 +1549,7 @@ section {
 }
 
 .account-dropdown__item a:hover {
-    background: #4272d7;
+    background: #ebaa20 !important;
     color: #fff;
 }
 
@@ -1568,7 +1576,7 @@ section {
 }
 
 .account-dropdown__footer a:hover {
-    background: #4272d7;
+    background: #dd901c !important;
     color: #fff;
 }
 
@@ -1644,11 +1652,11 @@ section {
 }
 
 .navbar-sidebar .navbar__list li a:hover {
-    color: #4272d7;
+    color: #e7a11d !important;
 }
 
 .navbar-sidebar .navbar__list li.active > a {
-    color: #4272d7;
+    color:  #e7a11d !important;
 }
 
 .has-sub {
@@ -1761,7 +1769,7 @@ section {
 }
 
 .header-mobile .navbar-mobile .navbar-mobile__list li a:hover {
-    color: #4272d7;
+    color: #e0931f !important;
 }
 
 .header-mobile .navbar-mobile .navbar-mobile__list li a > i {
@@ -1924,12 +1932,12 @@ section {
     text-transform: capitalize;
     text-align: center;
     font-size: 14px;
-    color: #4272d7;
+    color:  #e7a11d !important;
     padding: 24px 0;
 }
 
 .mess__footer a:hover, .email__footer a:hover, .notifi__footer a:hover {
-    color: #3868cd;
+    color:  #e7a11d !important;
 }
 
 .mess-dropdown {
@@ -2249,7 +2257,7 @@ section {
 }
 
 .navbar-sidebar2 .navbar__list li:hover > a {
-    color: #4272d7;
+    color:  #e7a11d !important;
 }
 
 .navbar-sidebar2 .navbar__list li a {
@@ -2265,7 +2273,7 @@ section {
 }
 
 .navbar-sidebar2 .navbar__list li.active > a {
-    color: #4272d7;
+    color: #db9718;
 }
 
 .navbar-sidebar2 .navbar__sub-list {
@@ -2696,6 +2704,7 @@ section {
     color: #ccc;
     padding: 25px 30px;
     border-left: 1px solid rgba(255, 255, 255, 0.102);
+    text-decoration: none !important;
 }
 
 .header__navbar ul li a i {
@@ -2703,7 +2712,7 @@ section {
 }
 
 .header__navbar ul li a:hover {
-    color: #4272d7;
+    color: #e4b229;
 }
 
 .header__navbar ul li a:hover .bot-line {
@@ -2737,7 +2746,7 @@ section {
 }
 
 .header__navbar ul li.active > a {
-    color: #4272d7;
+    color: #e79821;
 }
 
 .header__navbar ul li.active > a .bot-line {
@@ -2750,7 +2759,7 @@ section {
     -webkit-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease;SSS
 }
 
 .header__navbar ul.header3-sub-list {
@@ -2796,15 +2805,17 @@ section {
 }
 
 .header__navbar .header3-sub-list li a {
-    font-size: 15px;
+    font-size: 13px !important;
     color: #777777;
-    padding: 10px 22px;
+    padding: 5px 22px !important;
     border: none;
     border-bottom: 1px solid #e1e6eb;
+    font-family: arial !important;
+    text-decoration: no;
 }
 
 .header__navbar .header3-sub-list li a:hover {
-    color: #4272d7;
+    color: #df8a29 !important;
     background: #f7f7f7;
 }
 
@@ -2857,7 +2868,7 @@ section {
     position: absolute;
     width: 100%;
     height: 3px;
-    background: #4272d7;
+    background: #db9718;
     left: 0;
     bottom: 0;
     opacity: 0;
@@ -3451,7 +3462,7 @@ section {
 }
 
 .au-task__item--primary .au-task__item-inner {
-    border-left: 3px solid #4272d7;
+    border-left: 3px solid #db9718;
 }
 
 .au-task__item--success .au-task__item-inner {
@@ -3817,7 +3828,7 @@ section {
 }
 
 .send-mess {
-    background: #4272d7;
+    background: #db9718
     color: #fff;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -4471,7 +4482,7 @@ section {
 }
 
 .table-top-campaign.table tr td:last-child {
-    color: #4272d7;
+    color: #db9718;
     text-align: right;
 }
 

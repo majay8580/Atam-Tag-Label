@@ -4,7 +4,7 @@
              include('../header/header.php');
         ?>
                <!-- PAGE CONTENT-->
-               <div class="container createform">
+               <div class="container">
                    <div class="row">
                        <div class="col-lg-2">
 </div>
