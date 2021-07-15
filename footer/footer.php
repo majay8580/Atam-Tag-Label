@@ -1,21 +1,23 @@
-</div>
+
+                     <!-- END COPYRIGHT-->
+        </div>
 
 </div>
-<div class="container-fluid footercover">
-<section class="p-t-60 p-b-20 ">
+
+<div class="footercover" style="background-color:#e5e5e5">
+<section class="p-t-60 p-b-20 " style="padding-top:0px;padding-bottom:0px;">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="copyright">
+                            <div class="copyright" style="padding-top:0px !important">
                                 <p>Copyright © 2021 AtamTAg. All rights reserved. Developed by <a href="https://www.marsoneinnovators.com/">MarsoneInnovators .PVT .LTD</a>.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-</div>
-                     <!-- END COPYRIGHT-->
-  
+            </div>
+
 <!-- Jquery JS-->
 <script src="../vendor/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap JS-->

@@ -1,4 +1,30 @@
 
+<?php
+
+session_start();
+include 'dbConfig/database.php';
+//Login Credential Check Here
+if(isset($_POST["login"])){
+  $user      = $_POST['Username'];
+  $password  = $_POST['Password'];
+  echo $query  = 'select * from user where  username ="'.$user.'" AND password="'.$password.'"';
+  if($data = mysqli_fetch_assoc(mysqli_query($conn,$query))){
+    //  $rows = mysqli_num_rows($data);
+    //  echo $rows;
+    //  if($rows > 0){
+         //echo "Login Details Is Correct";
+         //$_SESSION['username'] = $data['username'];
+         //$_SESSION['email'] = $data['email'];
+         //$_SESSION['phone_no'] = $data['phone_no'];
+         //$_SESSION['id']       = $data['id'];
+         header("Location: dashboard.php"); 
+  //   }
+  }else{
+     echo "Check Username & Password";
+  }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

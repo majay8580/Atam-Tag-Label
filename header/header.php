@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+if($_SESSION['username'] == ""){
+  header("location:index.php");
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -5,10 +12,10 @@
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
-    <meta name="keywords" content="au theme template">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+    <!--<meta name="description" content="au theme template">-->
+    <!--<meta name="author" content="Hau Nguyen">-->
+    <!--<meta name="keywords" content="au theme template">-->
 
     <!-- Title Page-->
     <title>ATAMTAG</title>
@@ -33,12 +40,28 @@
 
     <!-- Main CSS-->
     <link href="../css/theme.css" rel="stylesheet" media="all">
-
+<style>
+   .clsStyle{
+        font-size:13px;
+        font-family:arial;
+    }
+    
+    .header__navbar ul li a{
+        font-size:13px !important;
+    }
+    .header-desktop3{
+        height: 55px;
+    }
+    .btn{
+        width: 15% !important;
+        height: 40px !important;
+    }
+</style>
 
 </head>
 
 <body>
-    <div class="page-wrapper">
+    <div class="page-wrapper" style="height:630px;">
 <header class="header-desktop3 d-none d-lg-block">
             <div class="section__content section__content--p35">
                 <div class="header3-wrap">
@@ -48,7 +71,7 @@
                            <h3 style="color:white"> ATAM TAG</h3>
                         </a>
                     </div>
-                    <div class="header__navbar">
+                    <div class="header__navbar" >
                         <ul class="list-unstyled">
                             <li class="has-sub">
                                 <a href="../dashboard.php">

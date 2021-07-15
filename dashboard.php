@@ -1,14 +1,21 @@
-<!-- 
+
+<?php
+session_start();
+if($_SESSION['username'] == ""){
+  header("location:index.php");
+}
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
-    <meta name="keywords" content="au theme template">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+    <!--<meta name="description" content="au theme template">-->
+    <!--<meta name="author" content="Hau Nguyen">-->
+    <!--<meta name="keywords" content="au theme template">-->
 
     <!-- Title Page-->
     <title>Atam Tag</title>
@@ -181,7 +188,7 @@
                                         </div>
                                     </div>
                                     <div class="account-dropdown__footer">
-                                        <a href="#">
+                                        <a href="Logout.php">
                                             <i class="zmdi zmdi-power"></i>Logout</a>
                                     </div>
                                 </div>
@@ -337,7 +344,7 @@
                                 </div>
                             </div>
                             <div class="account-dropdown__footer">
-                                <a href="#">
+                                <a href="Logout.php">
                                     <i class="zmdi zmdi-power"></i>Logout</a>
                             </div>
                         </div>

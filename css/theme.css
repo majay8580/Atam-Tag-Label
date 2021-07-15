@@ -287,7 +287,6 @@ section {
 .page-wrapper {
     overflow: hidden;
     background: #e5e5e5;
-    height: 633px !important;
 }
 
 @media (max-width: 991px) {
@@ -4761,7 +4760,7 @@ section {
 /* ----- Footer ----- */
 .copyright {
     text-align: center;
-    /* padding-top: 194px; */
+    padding-top:0px !important;
 }
 
 .copyright p {
