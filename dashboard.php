@@ -78,6 +78,48 @@ if($_SESSION['username'] == ""){
                                     <li>
                                         <a href="master/master_Size.php">Size</a>
                                     </li>
+                                    <li>
+                                        <a href="master/master_coca.php">Coca</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_dori.php">Dori / iLeats</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_pasting.php">Pasting</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_uvcoding.php">UV Coding</a>
+                                    </li> 
+                                    <li>
+                                        <a href="master/master_foil.php">Foil</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_embosing.php">Embosing</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_lamination.php">Lamination</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_cutting.php">Cutting</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_die.php">Die</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Labour</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_design_charges.php">Design Charges</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Printing</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_plates.php">Plates</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_dripoff.php">Drip Off</a>
+                                    </li>
                                     
                                 </ul>
                             </li>
@@ -239,6 +281,48 @@ if($_SESSION['username'] == ""){
                                 <li>
                                     <a href="master/master_Size.php">Size</a>
                                 </li>
+                                    <li>
+                                        <a href="master/master_coca.php">Coca</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_dori.php">Dori / iLeats</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_pasting.php">Pasting</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_uvcoding.php">UV Coding</a>
+                                    </li> 
+                                    <li>
+                                        <a href="master/master_foil.php">Foil</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_embosing.php">Embosing</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_lamination.php">Lamination</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_cutting.php">Cutting</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_die.php">Die</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Labour</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_design_charges.php">Design Charges</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Printing</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_plates.php">Plates</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_dripoff.php">Drip Off</a>
+                                    </li>
                             </ul>
                         </li>
 

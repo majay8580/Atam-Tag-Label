@@ -49,6 +49,10 @@ if($_SESSION['username'] == ""){
     .header__navbar ul li a{
         font-size:13px !important;
     }
+    
+    .header__navbar .header3-sub-list li a{
+        padding: 3px 22px !important;
+    }
     .header-desktop3{
         height: 55px;
     }
@@ -90,12 +94,52 @@ if($_SESSION['username'] == ""){
                                     </li>
                                     <li>
                                         <a href="../master/master_Sheet.php">Sheet</a>
-                
                                     </li>
                                     <li>
                                         <a href="../master/master_Size.php">Size</a>
                                     </li>
-                                    
+                                    <li>
+                                        <a href="../master/master_coca.php">Coca</a>
+                                    </li>
+                                    <li>
+                                        <a href="../master/master_dori.php">Dori / iLeats</a>
+                                    </li>
+                                    <li>
+                                        <a href="../master/master_pasting.php">Pasting</a>
+                                    </li>
+                                    <li>
+                                        <a href="../master/master_uvcoding.php">UV Coding</a>
+                                    </li> 
+                                    <li>
+                                        <a href="../master/master_foil.php">Foil</a>
+                                    </li>
+                                    <li>
+                                        <a href="../master/master_embosing.php">Embosing</a>
+                                    </li>
+                                    <li>
+                                        <a href="../master/master_lamination.php">Lamination</a>
+                                    </li>
+                                    <li>
+                                        <a href="../master/master_cutting.php">Cutting</a>
+                                    </li>
+                                    <li>
+                                        <a href="../master/master_die.php">Die</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Labour</a>
+                                    </li>
+                                    <li>
+                                        <a href="../master/master_design_charges.php">Design Charges</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Printing</a>
+                                    </li>
+                                    <li>
+                                        <a href="../master/master_plates.php">Plates</a>
+                                    </li>
+                                    <li>
+                                        <a href="../master/master_dripoff.php">Drip Off</a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="has-sub">
