@@ -25,29 +25,28 @@
                                         <strong>Create</strong> Foil 
                                     </div>
                                     <div class="card-body card-block">
-                                        <form id="CreateSize" name="CreateSize" method="post" class="form-horizontal" autocomplete="off">
+                                        <form id="CreateFoil" name="CreateFoil" method="post" class="form-horizontal" autocomplete="off">
                                             <div class="row form-group">
-                                                <div class="col col-md-2">
-                                                    <label class=" form-control-label clsStyle">Foil</label>
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label clsStyle">Foil Name</label>
                                                 </div>
-                                                <div class="col-12 col-md-10">
-                                                <div class="row">
-
-                                               <div class="col-6 col-md-6">
-                                               <input type="text" id="SizeWidth" name="SizeWidth" autocomplete="off"  placeholder="Enter Foil Name..." class="form-control clsStyle">
-                                                <span id="MSG_SizeWidth" class="clsStyle"></span>
-                                               </div>
-
-                                               <div class="col-6 col-md-6">
-                                               <input type="number" id="SizeHeight" name="SizeHeight" autocomplete="off"  placeholder="Enter Rate..." class="form-control clsStyle">
-                                               <span id="MSG_SizeHeight class="clsStyle"></span>
-                                               </div>
-</div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" id="FoilName" name="FoilName" autocomplete="off"  placeholder="Enter Foil Name..." class="form-control clsStyle">
+                                                    <span id="MSG_FoilName" class="clsStyle"></span>  
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label clsStyle">Foil Rate</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="number" id="FoilRate" name="FoilRate" autocomplete="off"  placeholder="Enter Rate..." class="form-control clsStyle">
+                                                    <span id="MSG_FoilRate" class="clsStyle"></span>  
                                                 </div>
                                             </div>
                                     </div>
                                     <div align="right" class="card-footer">
-                                        <button type="button" class="btn btn-primary btn-sm" id="BtnSizeSubmit">
+                                        <button type="button" class="btn btn-primary btn-sm" id="BtnFoilSubmit">
                                              Save
                                         </button>
                                         <button type="reset" class="btn btn-danger btn-sm" id="BtnView">
@@ -73,12 +72,12 @@ if($action == "View"){
                                         <thead>
                                             <tr>
                                                 <th>S.No</th>
-                                                <th>Width</th>
-                                                <th>Height</th>
+                                                <th>Name</th>
+                                                <th>Rate</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="tbodySizeData">
+                                        <tbody id="tbodyFoilData">
                                           
                                         </tbody>
                                     </table>
@@ -100,44 +99,47 @@ if($action == "View"){
       include('../footer/footer.php');
 ?>
 <script type="text/javascript">
-            
-    var url = '../action/action_size.php';
+
+Display_Foil_Data();
+function Display_Foil_Data(){
+    var url = '../action/action_foil.php';
     $.ajax({
       type: 'POST',
       url: url,
-      data:{action:'Display_Size_Data'},
+      data:{action:'Display_Foil_Data'},
       success: function (data) {
-            $('#tbodySizeData').html(data);
+            $('#tbodyFoilData').html(data);
       }
-    });    
+    });  
+}
     
-    $(document).on('keyup','#SizeWidth',function(){
-        let SizeWidth = $('#SizeWidth').val();
-        if(SizeWidth != ""){
-          $('#MSG_SizeWidth').empty();
+    $(document).on('keyup','#FoilName',function(){
+        let FoilName = $('#FoilName').val();
+        if(FoilName != ""){
+          $('#MSG_FoilName').empty();
         }else{
-          $('#MSG_SizeWidth').text("Width Is Mandatory....").css("color", "red");
+          $('#MSG_FoilName').text("Foil Name Is Mandatory....").css("color", "red");
         }
     });
     
-    $(document).on('keyup','#SizeHeight',function(){
-        let SizeHeight = $('#SizeHeight').val();
-        if(SizeHeight != ""){
-          $('#MSG_SizeHeight').empty();
+    $(document).on('keyup','#FoilRate',function(){
+        let FoilRate = $('#FoilRate').val();
+        if(FoilRate != ""){
+          $('#MSG_FoilRate').empty();
         }else{
-          $('#MSG_SizeHeight').text("Height Is Mandatory....").css("color", "red");
+          $('#MSG_FoilRate').text("Foil Rate Is Mandatory....").css("color", "red");
         }
     });
 
 // Save Contact Details In Database
-$('#BtnSizeSubmit').click(function (e) {
+$('#BtnFoilSubmit').click(function (e) {
     e.preventDefault();
-    var url = '../action/action_size.php';
-    if($('#SizeWidth').val() != "" && $('#SizeHeight').val() != ""){
+    var url = '../action/action_foil.php';
+    if($('#FoilName').val() != "" && $('#FoilRate').val() != ""){
           var formData = {
-            'SizeWidth'     : $('#SizeWidth').val(),
-            'SizeHeight'    : $('#SizeHeight').val(),
-            'action'        : "Insert_Size_Data"
+            'FoilName'    : $('#FoilName').val(),
+            'FoilRate'    : $('#FoilRate').val(),
+            'action'      : "Insert_Foil_Data"
          };
         $.ajax({
           type: 'POST',
@@ -145,22 +147,39 @@ $('#BtnSizeSubmit').click(function (e) {
           data: formData,
           success: function (data) {
             alert(data);
-            $('#CreateSize')[0].reset();
+            $('#CreateFoil')[0].reset();
           }
         });
     }else{
-        if($('#SizeWidth').val() == ""){
-          $('#MSG_SizeWidth').text("Width Is Mandatory..").css("color", "red");
+        if($('#FoilName').val() == ""){
+          $('#MSG_FoilName').text("Foil Name Is Mandatory..").css("color", "red");
         }
-        if($('#SizeHeight').val() == ""){
-          $('#MSG_SizeHeight').text("Height Is Mandatory..").css("color", "red");
+        if($('#FoilRate').val() == ""){
+          $('#MSG_FoilRate').text("Foil Rate Is Mandatory..").css("color", "red");
         }
         
     }
 });
 
 $('#BtnView').click(function(){
-    window.location.href="master_Size.php?action=View";
+    window.location.href="master_foil.php?action=View";
+});
+
+$(document).on('click','.clsDelete',function(){
+    var formData = {
+          'foil_id' : $(this).closest('tr').find('#foil_id').text(),
+          'action'  : "Delete_Foil_Data"
+      };
+    $.ajax({
+      type: 'POST',
+      url:'../action/action_foil.php',
+      data: formData,
+      success: function (data) {
+        alert(data);
+        Display_Foil_Data();
+      }
+    });
+    
 });
 </script>
    

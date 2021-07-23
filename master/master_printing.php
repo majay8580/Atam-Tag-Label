@@ -22,32 +22,32 @@
                <div class="col-lg-8">
                <div class="card">
                                     <div class="card-header">
-                                        <strong>Create</strong> Coca 
+                                        <strong>Create</strong> Printing 
                                     </div>
                                     <div class="card-body card-block">
-                                        <form id="CreateCoca" name="CreateCoca" method="post" class="form-horizontal" autocomplete="off">
+                                        <form id="CreatePrinting" name="CreatePrinting" method="post" class="form-horizontal" autocomplete="off">
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
-                                                    <label class=" form-control-label clsStyle">Coca Name</label>
+                                                    <label class=" form-control-label clsStyle">Printing</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="text" id="CocaName" name="CocaName" autocomplete="off"  placeholder="Enter Coca Name..." class="form-control clsStyle">
-                                                    <span id="MSG_CocaName" class="clsStyle"></span>
-                                               </div>  
+                                                   <input type="text" name="IdPrinting" id="IdPrinting" class="form-control clsStyle" placeholder="Enter Printing Name">
+                                                   <span id="MSG_IdPrinting" class="clsStyle"></span>  
+                                                </div>
                                             </div>   
-                                            
+                                                
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
-                                                    <label class=" form-control-label clsStyle">Coca Rate</label>
+                                                    <label class=" form-control-label clsStyle">Printing Rate</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                   <input type="number" id="CocaRate" name="CocaRate" autocomplete="off"  placeholder="Enter Rate..." class="form-control clsStyle">
-                                               <span id="MSG_CocaRate" class="clsStyle"></span>
-                                               </div>  
-                                            </div>  
+                                                    <input type="number" id="IdPrintingRate" name="PrintingRate" autocomplete="off"  placeholder="Enter Rate..." class="form-control clsStyle">
+                                                    <span id="MSG_IdPrintingRate" class="clsStyle"></span> 
+                                                </div>
+                                            </div> 
                                     </div>
                                     <div align="right" class="card-footer">
-                                        <button type="button" class="btn btn-primary btn-sm" id="BtnCocaSubmit">
+                                        <button type="button" class="btn btn-primary btn-sm" id="BtnPrintingSubmit">
                                              Save
                                         </button>
                                         <button type="reset" class="btn btn-danger btn-sm" id="BtnView">
@@ -78,7 +78,7 @@ if($action == "View"){
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="tbodyCocaData">
+                                        <tbody id="tbodyPrintingData">
                                           
                                         </tbody>
                                     </table>
@@ -101,46 +101,46 @@ if($action == "View"){
 ?>
 <script type="text/javascript">
 
-    Display_Coca_Data();
-    function Display_Coca_Data(){
-        var url = '../action/action_coca.php';
-        $.ajax({
-          type: 'POST',
-          url: url,
-          data:{action:'Display_Coca_Data'},
-          success: function (data) {
-                $('#tbodyCocaData').html(data);
-          }
-        });  
-    }
+Display_Printing_Data();
+function Display_Printing_Data(){            
+    var url = '../action/action_printing.php';
+    $.ajax({
+      type: 'POST',
+      url: url,
+      data:{action:'Display_Printing_Data'},
+      success: function (data) {
+            $('#tbodyPrintingData').html(data);
+      }
+    }); 
+}
     
-    $(document).on('keyup','#CocaName',function(){
-        let CocaName = $('#CocaName').val();
-        if(CocaName != ""){
-          $('#MSG_CocaName').empty();
+    $(document).on('keyup','#IdPrinting',function(){
+        let Printing = $('#IdPrinting').val();
+        if(Printing != ""){
+          $('#MSG_IdPrinting').empty();
         }else{
-          $('#MSG_CocaName').text("Coca Name Is Mandatory....").css("color", "red");
+          $('#MSG_IdPrinting').text("Printing Name Is Mandatory....").css("color", "red");
         }
     });
     
-    $(document).on('keyup','#CocaRate',function(){
-        let CocaRate = $('#CocaRate').val();
-        if(CocaRate != ""){
-          $('#MSG_CocaRate').empty();
+    $(document).on('keyup','#IdPrintingRate',function(){
+        let PrintingRate = $('#IdPrintingRate').val();
+        if(IdPrintingRate != ""){
+          $('#MSG_IdPrintingRate').empty();
         }else{
-          $('#MSG_CocaRate').text("Coca Rate Is Mandatory....").css("color", "red");
+          $('#MSG_IdPrintingRate').text("Height Is Mandatory....").css("color", "red");
         }
     });
 
 // Save Contact Details In Database
-$('#BtnCocaSubmit').click(function (e) {
+$('#BtnPrintingSubmit').click(function (e) {
     e.preventDefault();
-    var url = '../action/action_coca.php';
-    if($('#CocaName').val() != "" && $('#CocaRate').val() != ""){
+    var url = '../action/action_printing.php';
+    if($('#IdPrinting').val() != "" && $('#IdPrintingRate').val() != ""){
           var formData = {
-            'CocaName'     : $('#CocaName').val(),
-            'CocaRate'    : $('#CocaRate').val(),
-            'action'        : "Insert_Coca_Data"
+            'PrintingName'   : $('#IdPrinting').val(),
+            'PrintingRate'   : $('#IdPrintingRate').val(),
+            'action'         : "Insert_Printing_Data"
          };
         $.ajax({
           type: 'POST',
@@ -148,41 +148,39 @@ $('#BtnCocaSubmit').click(function (e) {
           data: formData,
           success: function (data) {
             alert(data);
-            $('#CreateCoca')[0].reset();
+            $('#CreatePrinting')[0].reset();
           }
         });
     }else{
-        if($('#SizeWidth').val() == ""){
-          $('#MSG_CocaName').text("Coca Name Is Mandatory..").css("color", "red");
+        if($('#IdPrinting').val() == ""){
+          $('#MSG_IdPrinting').text("Printing Is Mandatory..").css("color", "red");
         }
-        if($('#CocaRate').val() == ""){
-          $('#MSG_CocaRate').text("Coca Rate Is Mandatory..").css("color", "red");
+        if($('#IdPrintingRate').val() == ""){
+          $('#MSG_IdPrintingRate').text("Printing Rate Is Mandatory..").css("color", "red");
         }
         
     }
 });
 
 $('#BtnView').click(function(){
-    window.location.href="master_coca.php?action=View";
+    window.location.href="master_printing.php?action=View";
 });
 
 $(document).on('click','.clsDelete',function(){
     var formData = {
-          'coca_id' : $(this).closest('tr').find('#coca_id').text(),
-          'action'  : "Delete_Coca_Data"
+          'printing_Id' : $(this).closest('tr').find('#printing_Id').text(),
+          'action'      : "Delete_Printing_Data"
       };
     $.ajax({
       type: 'POST',
-      url:'../action/action_coca.php',
+      url:'../action/action_printing.php',
       data: formData,
       success: function (data) {
         alert(data);
-        Display_Coca_Data();
+        Display_Printing_Data();
       }
     });
     
 });
-
-
 </script>
    

@@ -50,9 +50,9 @@ if($_SESSION['username'] == ""){
         font-size:13px !important;
     }
     
-    .header__navbar .header3-sub-list li a{
-        padding: 3px 22px !important;
-    }
+    /*.header__navbar .header3-sub-list li a{*/
+    /*    padding: 3px 22px !important;*/
+    /*}*/
     .header-desktop3{
         height: 55px;
     }
@@ -65,7 +65,7 @@ if($_SESSION['username'] == ""){
 </head>
 
 <body>
-    <div class="page-wrapper" style="height:630px;">
+    <div class="page-wrapper" style="height:695px;">
 <header class="header-desktop3 d-none d-lg-block">
             <div class="section__content section__content--p35">
                 <div class="header3-wrap">
@@ -89,26 +89,32 @@ if($_SESSION['username'] == ""){
                                     <i class="fas fa-shopping-basket"></i>
                                     <span class="bot-line"></span>Master</a>
                                      <ul class="header3-sub-list list-unstyled">
-                                    <li>
-                                        <a href="../master/master_party.php">Party</a>
+                                    <li id="master_party">
+                                        <a href="#">Party</a>
                                     </li>
                                     <li>
                                         <a href="../master/master_Sheet.php">Sheet</a>
                                     </li>
                                     <li>
-                                        <a href="../master/master_Size.php">Size</a>
+                                        <a href="../master/master_Size.php">Sheet Size</a>
+                                    </li>
+                                    <li>
+                                        <a href="../master/master_printing.php">Printing</a>
                                     </li>
                                     <li>
                                         <a href="../master/master_coca.php">Coca</a>
                                     </li>
                                     <li>
-                                        <a href="../master/master_dori.php">Dori / iLeats</a>
+                                        <a href="../master/master_dori.php">Dori</a>
+                                    </li>
+                                    <li>
+                                        <a href="../master/master_iLeats.php">ILeats</a>
                                     </li>
                                     <li>
                                         <a href="../master/master_pasting.php">Pasting</a>
                                     </li>
                                     <li>
-                                        <a href="../master/master_uvcoding.php">UV Coding</a>
+                                        <a href="../master/master_uvcoding.php">UV</a>
                                     </li> 
                                     <li>
                                         <a href="../master/master_foil.php">Foil</a>
@@ -120,19 +126,16 @@ if($_SESSION['username'] == ""){
                                         <a href="../master/master_lamination.php">Lamination</a>
                                     </li>
                                     <li>
-                                        <a href="../master/master_cutting.php">Cutting</a>
+                                        <a href="../master/master_die_cutting.php">Die Cutting</a>
                                     </li>
                                     <li>
                                         <a href="../master/master_die.php">Die</a>
                                     </li>
                                     <li>
-                                        <a href="#">Labour</a>
+                                        <a href="../master/master_labour_charges.php">Labour Charges</a>
                                     </li>
                                     <li>
                                         <a href="../master/master_design_charges.php">Design Charges</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Printing</a>
                                     </li>
                                     <li>
                                         <a href="../master/master_plates.php">Plates</a>
@@ -571,4 +574,6 @@ if($_SESSION['username'] == ""){
             </div>
         </div>
         <!-- END HEADER MOBILE -->
+        <div id="AllData">
+
 

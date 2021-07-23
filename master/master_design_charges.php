@@ -25,29 +25,29 @@
                                         <strong>Create</strong> Design Charges 
                                     </div>
                                     <div class="card-body card-block">
-                                        <form id="CreateSize" name="CreateSize" method="post" class="form-horizontal" autocomplete="off">
+                                        <form id="CreateDesign" name="CreateDesign" method="post" class="form-horizontal" autocomplete="off">
                                             <div class="row form-group">
-                                                <div class="col col-md-2">
+                                                <div class="col col-md-3">
                                                     <label class=" form-control-label clsStyle">Design</label>
                                                 </div>
-                                                <div class="col-12 col-md-10">
-                                                <div class="row">
-
-                                               <div class="col-6 col-md-6">
-                                               <input type="text" id="SizeWidth" name="SizeWidth" autocomplete="off"  placeholder="Enter Design Name..." class="form-control clsStyle">
-                                                <span id="MSG_SizeWidth" class="clsStyle"></span>
-                                               </div>
-
-                                               <div class="col-6 col-md-6">
-                                               <input type="number" id="SizeHeight" name="SizeHeight" autocomplete="off"  placeholder="Enter Rate..." class="form-control clsStyle">
-                                               <span id="MSG_SizeHeight class="clsStyle"></span>
-                                               </div>
-</div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" id="DesignName" name="DesignName" autocomplete="off"  placeholder="Enter Design Name..." class="form-control clsStyle">
+                                                    <span id="MSG_DesignName" class="clsStyle"></span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label clsStyle">Rate</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                     <input type="number" id="DesignRate" name="DesignRate" autocomplete="off"  placeholder="Enter Rate..." class="form-control clsStyle">
+                                                     <span id="MSG_SizeHeight class="clsStyle"></span>
                                                 </div>
                                             </div>
                                     </div>
                                     <div align="right" class="card-footer">
-                                        <button type="button" class="btn btn-primary btn-sm" id="BtnSizeSubmit">
+                                        <button type="button" class="btn btn-primary btn-sm" id="BtnDesignSubmit">
                                              Save
                                         </button>
                                         <button type="reset" class="btn btn-danger btn-sm" id="BtnView">
@@ -73,12 +73,12 @@ if($action == "View"){
                                         <thead>
                                             <tr>
                                                 <th>S.No</th>
-                                                <th>Width</th>
-                                                <th>Height</th>
+                                                <th>Name</th>
+                                                <th>Rate</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="tbodySizeData">
+                                        <tbody id="tbodyDesignData">
                                           
                                         </tbody>
                                     </table>
@@ -100,44 +100,47 @@ if($action == "View"){
       include('../footer/footer.php');
 ?>
 <script type="text/javascript">
-            
-    var url = '../action/action_size.php';
+
+Display_Design_Data();
+function Display_Design_Data(){
+    var url = '../action/action_design_charges.php';
     $.ajax({
       type: 'POST',
       url: url,
-      data:{action:'Display_Size_Data'},
+      data:{action:'Display_Design_Data'},
       success: function (data) {
-            $('#tbodySizeData').html(data);
+            $('#tbodyDesignData').html(data);
       }
-    });    
+    });  
+}
     
-    $(document).on('keyup','#SizeWidth',function(){
-        let SizeWidth = $('#SizeWidth').val();
-        if(SizeWidth != ""){
-          $('#MSG_SizeWidth').empty();
+    $(document).on('keyup','#DesignName',function(){
+        let DesignName = $('#DesignName').val();
+        if(DesignName != ""){
+          $('#MSG_DesignName').empty();
         }else{
-          $('#MSG_SizeWidth').text("Width Is Mandatory....").css("color", "red");
+          $('#MSG_DesignName').text("Design Name Is Mandatory....").css("color", "red");
         }
     });
     
-    $(document).on('keyup','#SizeHeight',function(){
-        let SizeHeight = $('#SizeHeight').val();
-        if(SizeHeight != ""){
-          $('#MSG_SizeHeight').empty();
+    $(document).on('keyup','#DesignRate',function(){
+        let DesignRate = $('#DesignRate').val();
+        if(DesignRate != ""){
+          $('#MSG_DesignRate').empty();
         }else{
-          $('#MSG_SizeHeight').text("Height Is Mandatory....").css("color", "red");
+          $('#MSG_DesignRate').text("Design Rate Is Mandatory....").css("color", "red");
         }
     });
 
 // Save Contact Details In Database
-$('#BtnSizeSubmit').click(function (e) {
+$('#BtnDesignSubmit').click(function (e) {
     e.preventDefault();
-    var url = '../action/action_size.php';
-    if($('#SizeWidth').val() != "" && $('#SizeHeight').val() != ""){
+    var url = '../action/action_design_charges.php';
+    if($('#DesignName').val() != "" && $('#DesignRate').val() != ""){
           var formData = {
-            'SizeWidth'     : $('#SizeWidth').val(),
-            'SizeHeight'    : $('#SizeHeight').val(),
-            'action'        : "Insert_Size_Data"
+            'DesignName'    : $('#DesignName').val(),
+            'DesignRate'    : $('#DesignRate').val(),
+            'action'        : "Insert_Design_Data"
          };
         $.ajax({
           type: 'POST',
@@ -145,22 +148,40 @@ $('#BtnSizeSubmit').click(function (e) {
           data: formData,
           success: function (data) {
             alert(data);
-            $('#CreateSize')[0].reset();
+            $('#CreateDesign')[0].reset();
           }
         });
     }else{
-        if($('#SizeWidth').val() == ""){
-          $('#MSG_SizeWidth').text("Width Is Mandatory..").css("color", "red");
+        if($('#DesignName').val() == ""){
+          $('#MSG_DesignName').text("Design Name Is Mandatory..").css("color", "red");
         }
-        if($('#SizeHeight').val() == ""){
-          $('#MSG_SizeHeight').text("Height Is Mandatory..").css("color", "red");
+        if($('#DesignRate').val() == ""){
+          $('#MSG_DesignRate').text("Design Rate Is Mandatory..").css("color", "red");
         }
         
     }
 });
 
 $('#BtnView').click(function(){
-    window.location.href="master_Size.php?action=View";
+    window.location.href="master_design_charges.php?action=View";
 });
+
+$(document).on('click','.clsDelete',function(){
+    var formData = {
+          'design_id' : $(this).closest('tr').find('#design_id').text(),
+          'action'   : "Delete_Design_Data"
+      };
+    $.ajax({
+      type: 'POST',
+      url:'../action/action_design_charges.php',
+      data: formData,
+      success: function (data) {
+        alert(data);
+        Display_Design_Data();
+      }
+    });
+});
+
+
 </script>
    

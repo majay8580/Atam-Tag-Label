@@ -22,27 +22,26 @@
                <div class="col-lg-8">
                <div class="card">
                                     <div class="card-header">
-                                        <strong>Create</strong> Size 
+                                        <strong>Create</strong> Sheet Size 
                                     </div>
                                     <div class="card-body card-block">
                                         <form id="CreateSize" name="CreateSize" method="post" class="form-horizontal" autocomplete="off">
                                             <div class="row form-group">
-                                                <div class="col col-md-2">
-                                                    <label class=" form-control-label clsStyle">Size</label>
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label clsStyle">Sheet Length</label>
                                                 </div>
-                                                <div class="col-12 col-md-10">
-                                                <div class="row">
-
-                                               <div class="col-6 col-md-6">
-                                               <input type="number" id="SizeWidth" name="SizeWidth" autocomplete="off"  placeholder="Enter Width..." class="form-control clsStyle">
-                                                <span id="MSG_SizeWidth" class="clsStyle"></span>
-                                               </div>
-
-                                               <div class="col-6 col-md-6">
-                                               <input type="number" id="SizeHeight" name="SizeHeight" autocomplete="off"  placeholder="Enter Height..." class="form-control clsStyle">
-                                               <span id="MSG_SizeHeight class="clsStyle"></span>
-                                               </div>
-</div>
+                                                 <div class="col-12 col-md-9">
+                                                    <input type="number" id="SizeWidth" name="SizeWidth" autocomplete="off"  placeholder="Enter Length" class="form-control clsStyle">
+                                                    <span id="MSG_SizeWidth" class="clsStyle"></span> 
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label clsStyle">Sheet Width</label>
+                                                </div>
+                                                 <div class="col-12 col-md-9">
+                                                    <input type="number" id="SizeHeight" name="SizeHeight" autocomplete="off"  placeholder="Enter Width" class="form-control clsStyle">
+                                                    <span id="MSG_SizeHeight class="clsStyle"></span>
                                                 </div>
                                             </div>
                                     </div>
@@ -73,8 +72,8 @@ if($action == "View"){
                                         <thead>
                                             <tr>
                                                 <th>S.No</th>
+                                                <th>Length</th>
                                                 <th>Width</th>
-                                                <th>Height</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -100,7 +99,9 @@ if($action == "View"){
       include('../footer/footer.php');
 ?>
 <script type="text/javascript">
-            
+
+Display_SheetSize_Data();
+function Display_SheetSize_Data(){     
     var url = '../action/action_size.php';
     $.ajax({
       type: 'POST',
@@ -109,7 +110,8 @@ if($action == "View"){
       success: function (data) {
             $('#tbodySizeData').html(data);
       }
-    });    
+    });
+}
     
     $(document).on('keyup','#SizeWidth',function(){
         let SizeWidth = $('#SizeWidth').val();
@@ -161,6 +163,24 @@ $('#BtnSizeSubmit').click(function (e) {
 
 $('#BtnView').click(function(){
     window.location.href="master_Size.php?action=View";
+});
+
+
+$(document).on('click','.clsDelete',function(){
+    var formData = {
+          'size_id' : $(this).closest('tr').find('#size_id').text(),
+          'action'   : "Delete_SheetSize_Data"
+      };
+    $.ajax({
+      type: 'POST',
+      url:'../action/action_size.php',
+      data: formData,
+      success: function (data) {
+        alert(data);
+        Display_SheetSize_Data();
+      }
+    });
+    
 });
 </script>
    

@@ -22,32 +22,32 @@
                <div class="col-lg-8">
                <div class="card">
                                     <div class="card-header">
-                                        <strong>Create</strong> UV Coding 
+                                        <strong>Create</strong> UV  
                                     </div>
                                     <div class="card-body card-block">
-                                        <form id="CreateSize" name="CreateSize" method="post" class="form-horizontal" autocomplete="off">
+                                        <form id="CreateUV" name="CreateUV" method="post" class="form-horizontal" autocomplete="off">
                                             <div class="row form-group">
-                                                <div class="col col-md-2">
-                                                    <label class=" form-control-label clsStyle">UV Coding</label>
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label clsStyle">UV</label>
                                                 </div>
-                                                <div class="col-12 col-md-10">
-                                                <div class="row">
-
-                                               <div class="col-6 col-md-6">
-                                               <input type="text" id="SizeWidth" name="SizeWidth" autocomplete="off"  placeholder="Enter Coding Name..." class="form-control clsStyle">
-                                                <span id="MSG_SizeWidth" class="clsStyle"></span>
-                                               </div>
-
-                                               <div class="col-6 col-md-6">
-                                               <input type="number" id="SizeHeight" name="SizeHeight" autocomplete="off"  placeholder="Enter Rate..." class="form-control clsStyle">
-                                               <span id="MSG_SizeHeight class="clsStyle"></span>
-                                               </div>
-</div>
+                                                <div class="col-12 col-md-9">
+                                                  <input type="text" id="UVName" name="UVName" autocomplete="off"  placeholder="Enter UV Name..." class="form-control clsStyle">
+                                                  <span id="MSG_UVName" class="clsStyle"></span>
+                                               </div>  
+                                            </div>
+                                            
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label clsStyle">UV Rate</label>
                                                 </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="number" id="UVRate" name="UVRate" autocomplete="off"  placeholder="Enter Rate..." class="form-control clsStyle">
+                                                    <span id="MSG_UVRate" class="clsStyle"></span>
+                                               </div>  
                                             </div>
                                     </div>
                                     <div align="right" class="card-footer">
-                                        <button type="button" class="btn btn-primary btn-sm" id="BtnSizeSubmit">
+                                        <button type="button" class="btn btn-primary btn-sm" id="BtnUVSubmit">
                                              Save
                                         </button>
                                         <button type="reset" class="btn btn-danger btn-sm" id="BtnView">
@@ -73,12 +73,12 @@ if($action == "View"){
                                         <thead>
                                             <tr>
                                                 <th>S.No</th>
-                                                <th>Width</th>
-                                                <th>Height</th>
+                                                <th>Name</th>
+                                                <th>Rate</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="tbodySizeData">
+                                        <tbody id="tbodyUVData">
                                           
                                         </tbody>
                                     </table>
@@ -100,44 +100,47 @@ if($action == "View"){
       include('../footer/footer.php');
 ?>
 <script type="text/javascript">
-            
-    var url = '../action/action_size.php';
+
+Display_UV_Data();
+function Display_UV_Data(){
+    var url = '../action/action_uvcoding.php';
     $.ajax({
       type: 'POST',
       url: url,
-      data:{action:'Display_Size_Data'},
+      data:{action:'Display_UV_Data'},
       success: function (data) {
-            $('#tbodySizeData').html(data);
+            $('#tbodyUVData').html(data);
       }
-    });    
+    }); 
+}
     
-    $(document).on('keyup','#SizeWidth',function(){
-        let SizeWidth = $('#SizeWidth').val();
+    $(document).on('keyup','#UVName',function(){
+        let UVName = $('#UVName').val();
         if(SizeWidth != ""){
-          $('#MSG_SizeWidth').empty();
+          $('#MSG_UVName').empty();
         }else{
-          $('#MSG_SizeWidth').text("Width Is Mandatory....").css("color", "red");
+          $('#MSG_UVName').text("UV Name Is Mandatory....").css("color", "red");
         }
     });
     
-    $(document).on('keyup','#SizeHeight',function(){
-        let SizeHeight = $('#SizeHeight').val();
-        if(SizeHeight != ""){
-          $('#MSG_SizeHeight').empty();
+    $(document).on('keyup','#UVRate',function(){
+        let UVRate = $('#UVRate').val();
+        if(UVRate != ""){
+          $('#MSG_UVRate').empty();
         }else{
-          $('#MSG_SizeHeight').text("Height Is Mandatory....").css("color", "red");
+          $('#MSG_UVRate').text("UV Rate Is Mandatory....").css("color", "red");
         }
     });
 
 // Save Contact Details In Database
-$('#BtnSizeSubmit').click(function (e) {
+$('#BtnUVSubmit').click(function (e) {
     e.preventDefault();
-    var url = '../action/action_size.php';
-    if($('#SizeWidth').val() != "" && $('#SizeHeight').val() != ""){
+    var url = '../action/action_uvcoding.php';
+    if($('#UVName').val() != "" && $('#UVRate').val() != ""){
           var formData = {
-            'SizeWidth'     : $('#SizeWidth').val(),
-            'SizeHeight'    : $('#SizeHeight').val(),
-            'action'        : "Insert_Size_Data"
+            'UVName'     : $('#UVName').val(),
+            'UVRate'     : $('#UVRate').val(),
+            'action'     : "Insert_UV_Data"
          };
         $.ajax({
           type: 'POST',
@@ -145,22 +148,40 @@ $('#BtnSizeSubmit').click(function (e) {
           data: formData,
           success: function (data) {
             alert(data);
-            $('#CreateSize')[0].reset();
+            $('#CreateUV')[0].reset();
           }
         });
     }else{
-        if($('#SizeWidth').val() == ""){
-          $('#MSG_SizeWidth').text("Width Is Mandatory..").css("color", "red");
+        if($('#UVName').val() == ""){
+          $('#MSG_UVName').text("UV Name Is Mandatory..").css("color", "red");
         }
-        if($('#SizeHeight').val() == ""){
-          $('#MSG_SizeHeight').text("Height Is Mandatory..").css("color", "red");
+        if($('#UVRate').val() == ""){
+          $('#MSG_UVRate').text("UV Rate Is Mandatory..").css("color", "red");
         }
         
     }
 });
 
 $('#BtnView').click(function(){
-    window.location.href="master_Size.php?action=View";
+    window.location.href="master_uvcoding.php?action=View";
 });
+
+$(document).on('click','.clsDelete',function(){
+    var formData = {
+          'uv_coding_id' : $(this).closest('tr').find('#uv_coding_id').text(),
+          'action'          : "Delete_UV_Data"
+      };
+    $.ajax({
+      type: 'POST',
+      url:'../action/action_uvcoding.php',
+      data: formData,
+      success: function (data) {
+        alert(data);
+        Display_UV_Data();
+      }
+    });
+    
+});
+
 </script>
    

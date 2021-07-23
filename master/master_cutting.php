@@ -73,8 +73,8 @@ if($action == "View"){
                                         <thead>
                                             <tr>
                                                 <th>S.No</th>
-                                                <th>Width</th>
-                                                <th>Height</th>
+                                                <th>Die Cutting Name</th>
+                                                <th>Die Cutting Rate</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -160,7 +160,7 @@ $('#BtnSizeSubmit').click(function (e) {
 });
 
 $('#BtnView').click(function(){
-    window.location.href="master_Size.php?action=View";
+    window.location.href="master_cutting.php?action=View";
 });
 </script>
    

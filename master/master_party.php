@@ -161,16 +161,19 @@ if($action == "View"){
     ?>
             
 <script type="text/javascript">
-            
-    var url = '../action/action_party.php';
-    $.ajax({
-      type: 'POST',
-      url: url,
-      data:{action:'Display_Party_Data'},
-      success: function (data) {
-            $('#tbodyPartyData').html(data);
-      }
-    });       
+
+    Display_Party_Data();
+    function Display_Party_Data(){  
+        var url = '../action/action_party.php';
+        $.ajax({
+          type: 'POST',
+          url: url,
+          data:{action:'Display_Party_Data'},
+          success: function (data) {
+                $('#tbodyPartyData').html(data);
+          }
+        });       
+    }
             
             
     $(document).on('keyup','#PartyName',function(){
@@ -249,6 +252,24 @@ $('#BtnPartySubmit').click(function (e) {
 
 $('#BtnView').click(function(){
     window.location.href="master_party.php?action=View";
+});
+
+
+$(document).on('click','.clsDelete',function(){
+    var formData = {
+          'accountInsertId' : $(this).closest('tr').find('#accountInsertId').text(),
+          'action'          : "Delete_Party_Data"
+      };
+    $.ajax({
+      type: 'POST',
+      url:'../action/action_party.php',
+      data: formData,
+      success: function (data) {
+        alert(data);
+        Display_Party_Data();
+      }
+    });
+    
 });
 </script>
             

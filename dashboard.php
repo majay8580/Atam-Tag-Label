@@ -40,6 +40,27 @@ if($_SESSION['username'] == ""){
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
+    <style>
+   .clsStyle{
+        font-size:13px;
+        font-family:arial;
+    }
+    
+    .header__navbar ul li a{
+        font-size:13px !important;
+    }
+    
+    /*.header__navbar .header3-sub-list li a{*/
+    /*    padding: 3px 22px !important;*/
+    /*}*/
+    .header-desktop3{
+        height: 55px;
+    }
+    .btn{
+        width: 15% !important;
+        height: 40px !important;
+    }
+</style>
 
 
 </head>
@@ -52,7 +73,7 @@ if($_SESSION['username'] == ""){
                     <div class="header__logo">
                         <a href="dashboard.php">
                             <!-- <img src="images/icon/logo-white.png" alt="CoolAdmin" /> -->
-                           <h3 style="color:white"> ATAM TAG</h3>
+                           <h4 style="color:white"> ATAM TAG</h4>
                         </a>
                     </div>
                     <div class="header__navbar">
@@ -82,7 +103,10 @@ if($_SESSION['username'] == ""){
                                         <a href="master/master_coca.php">Coca</a>
                                     </li>
                                     <li>
-                                        <a href="master/master_dori.php">Dori / iLeats</a>
+                                        <a href="master/master_dori.php">Dori</a>
+                                    </li>
+                                    <li>
+                                        <a href="master/master_iLeats.php">ILeats</a>
                                     </li>
                                     <li>
                                         <a href="master/master_pasting.php">Pasting</a>

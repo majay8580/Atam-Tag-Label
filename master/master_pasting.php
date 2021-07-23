@@ -25,33 +25,29 @@
                                         <strong>Create</strong> Pasting 
                                     </div>
                                     <div class="card-body card-block">
-                                        <form id="CreateSize" name="CreateSize" method="post" class="form-horizontal" autocomplete="off">
+                                        <form id="CreatePasting" name="CreatePasting" method="post" class="form-horizontal" autocomplete="off">
                                             <div class="row form-group">
-                                                <div class="col col-md-2">
-                                                    <label class=" form-control-label clsStyle">Pasting</label>
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label clsStyle">Pasting Name</label>
                                                 </div>
-                                                <div class="col-12 col-md-10">
-                                                <div class="row">
-
-                                               <div class="col-6 col-md-6">
-                                                   <select name="Pasting" id="IdPasting" class="form-control clsStyle">
-                                                       <option value="">Select Pasting</option>
-                                                       <option value="Single Pasting">Single Pasting</option>
-                                                       <option value="Double Pasting">Double Pasting</option>
-                                                   </select>
-                                                   <span id="MSG_SizeWidth" class="clsStyle"></span>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" name="PastingName" id="PastingName" class="form-control clsStyle" placeholder="Enter Pasting Name">
+                                                   <span id="MSG_PastingName" class="clsStyle"></span>
                                                </div>
-
-                                               <div class="col-6 col-md-6">
-                                               <input type="number" id="SizeHeight" name="SizeHeight" autocomplete="off"  placeholder="Enter Rate..." class="form-control clsStyle">
-                                               <span id="MSG_SizeHeight class="clsStyle"></span>
-                                               </div>
-</div>
+                                            </div>
+                                            
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label clsStyle">Pasting Rate</label>
                                                 </div>
+                                                <div class="col-12 col-md-9">
+                                                   <input type="number" id="PastingRate" name="PastingRate" autocomplete="off"  placeholder="Enter Rate..." class="form-control clsStyle">
+                                                   <span id="MSG_PastingRate" class="clsStyle"></span>
+                                               </div>
                                             </div>
                                     </div>
                                     <div align="right" class="card-footer">
-                                        <button type="button" class="btn btn-primary btn-sm" id="BtnSizeSubmit">
+                                        <button type="button" class="btn btn-primary btn-sm" id="BtnPastingSubmit">
                                              Save
                                         </button>
                                         <button type="reset" class="btn btn-danger btn-sm" id="BtnView">
@@ -77,12 +73,12 @@ if($action == "View"){
                                         <thead>
                                             <tr>
                                                 <th>S.No</th>
-                                                <th>Width</th>
-                                                <th>Height</th>
+                                                <th>Name</th>
+                                                <th>Rate</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="tbodySizeData">
+                                        <tbody id="tbodyPastingData">
                                           
                                         </tbody>
                                     </table>
@@ -104,44 +100,47 @@ if($action == "View"){
       include('../footer/footer.php');
 ?>
 <script type="text/javascript">
-            
-    var url = '../action/action_size.php';
+
+Display_Pasting_Data();
+function Display_Pasting_Data(){
+    var url = '../action/action_pasting.php';
     $.ajax({
       type: 'POST',
       url: url,
-      data:{action:'Display_Size_Data'},
+      data:{action:'Display_Pasting_Data'},
       success: function (data) {
-            $('#tbodySizeData').html(data);
+            $('#tbodyPastingData').html(data);
       }
-    });    
+    }); 
+}
     
-    $(document).on('keyup','#SizeWidth',function(){
-        let SizeWidth = $('#SizeWidth').val();
-        if(SizeWidth != ""){
-          $('#MSG_SizeWidth').empty();
+    $(document).on('keyup','#PastingName',function(){
+        let PastingName = $('#PastingName').val();
+        if(PastingName != ""){
+          $('#MSG_PastingName').empty();
         }else{
-          $('#MSG_SizeWidth').text("Width Is Mandatory....").css("color", "red");
+          $('#MSG_PastingName').text("Pasting Name Is Mandatory....").css("color", "red");
         }
     });
     
-    $(document).on('keyup','#SizeHeight',function(){
-        let SizeHeight = $('#SizeHeight').val();
-        if(SizeHeight != ""){
-          $('#MSG_SizeHeight').empty();
+    $(document).on('keyup','#PastingRate',function(){
+        let PastingRate = $('#PastingRate').val();
+        if(PastingRate != ""){
+          $('#MSG_PastingRate').empty();
         }else{
-          $('#MSG_SizeHeight').text("Height Is Mandatory....").css("color", "red");
+          $('#MSG_PastingRate').text("Pasting Rate Is Mandatory....").css("color", "red");
         }
     });
 
 // Save Contact Details In Database
-$('#BtnSizeSubmit').click(function (e) {
+$('#BtnPastingSubmit').click(function (e) {
     e.preventDefault();
-    var url = '../action/action_size.php';
-    if($('#SizeWidth').val() != "" && $('#SizeHeight').val() != ""){
+    var url = '../action/action_pasting.php';
+    if($('#PastingName').val() != "" && $('#PastingRate').val() != ""){
           var formData = {
-            'SizeWidth'     : $('#SizeWidth').val(),
-            'SizeHeight'    : $('#SizeHeight').val(),
-            'action'        : "Insert_Size_Data"
+            'PastingName'   : $('#PastingName').val(),
+            'PastingRate'   : $('#PastingRate').val(),
+            'action'        : "Insert_Pasting_Data"
          };
         $.ajax({
           type: 'POST',
@@ -149,22 +148,40 @@ $('#BtnSizeSubmit').click(function (e) {
           data: formData,
           success: function (data) {
             alert(data);
-            $('#CreateSize')[0].reset();
+            $('#CreatePasting')[0].reset();
           }
         });
     }else{
-        if($('#SizeWidth').val() == ""){
-          $('#MSG_SizeWidth').text("Width Is Mandatory..").css("color", "red");
+        if($('#PastingName').val() == ""){
+          $('#MSG_PastingName').text("Pasting Name Is Mandatory..").css("color", "red");
         }
-        if($('#SizeHeight').val() == ""){
-          $('#MSG_SizeHeight').text("Height Is Mandatory..").css("color", "red");
+        if($('#PastingRate').val() == ""){
+          $('#MSG_PastingRate').text("Pasting Rate Is Mandatory..").css("color", "red");
         }
         
     }
 });
 
 $('#BtnView').click(function(){
-    window.location.href="master_Size.php?action=View";
+    window.location.href="master_pasting.php?action=View";
 });
+
+$(document).on('click','.clsDelete',function(){
+    var formData = {
+          'pasting_id' : $(this).closest('tr').find('#pasting_id').text(),
+          'action'     : "Delete_Pasting_Data"
+      };
+    $.ajax({
+      type: 'POST',
+      url:'../action/action_pasting.php',
+      data: formData,
+      success: function (data) {
+        alert(data);
+        Display_Pasting_Data();
+      }
+    });
+    
+});
+
 </script>
    

@@ -39,13 +39,28 @@ $SrNo = 1;
                         <td id="IDCountry">'.$row["state"].'</td>
                         <td id="IDCountry">'.$row["city"].'</td>
                         <td id="IDCountry">'.$row["address"].'</td>
-                        <td id="IDCountry">Edit/Delete</td>
+                        <td id="accountInsertId" style="display:none;">'.$row["accountInsertId"].'</td>
+                        <td id="IDCountry">
+                            <i class="fa fa-trash clsDelete" aria-hidden="true" style="cursor:pointer;"></i> &nbsp;&nbsp;
+                           
+                        </td>
                         </tr>
                         ';   
                         $SrNo = $SrNo+1;
+                         //<i class="fa fa-edit clsEdit" aria-hidden="true" style="cursor:pointer;"></i>
                     }
                 echo $html;
         	}
+    	}
+    	
+    	if($_POST['action'] == "Delete_Party_Data"){
+    	    $sql = 'delete FROM `accounts` where accountInsertId="'.$_POST["accountInsertId"].'"';
+            if(mysqli_query($conn,$sql)){
+               echo "Party Deleted Successfully"; 
+            }else{
+                echo "Error In Party Delete"; 
+            }
+                
     	}
     	
     }	

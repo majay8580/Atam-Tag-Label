@@ -1,24 +1,21 @@
 
         <!-- HEADER DESKTOP-->
         <?php
-             include('../header/header.php');
+            // include('../header/header.php');
+            $output ='';
                 if(!empty($_GET['action'])){
             	  $action = $_GET['action'];
              }else{
                 	$action = "Create"; 
              } 
-        ?>
-               <!-- PAGE CONTENT-->
-               <div class="container createform">
-        <?php
         
+            $output = '<div class="container createform">';
         
         if($action == "Create"){
         
-        ?>
                    
                    
-                   <div class="row">
+          $output .= '<div class="row">
                        <div class="col-lg-2">
                     </div>
                <div class="col-lg-8">
@@ -63,21 +60,19 @@
                                 <div class="col-lg-2">
 </div>
 </div>
-</div>
-<?php
+</div>';
+
 }
 if($action == "View"){
     
-?>
 
-                 
-                    <!-- DATA TABLE-->
-                    <div class="table-responsive m-b-40">
+
+  $output .= '<div class="table-responsive m-b-40">
                                     <table class="table table-borderless table-data3">
                                         <thead>
                                             <tr>
                                                 <th>S.No</th>
-                                                <th style="width:50%;">Sheet Name</th>
+                                                <th style="width:50%;">Name</th>
                                                 <th>Rate</th>
                                                 <th>Action</th>
                                             </tr>
@@ -87,83 +82,80 @@ if($action == "View"){
                                           
                                         </tbody>
                                     </table>
-                                </div>
-                                <!-- END DATA TABLE-->
+                                </div>';
 
-
-<?php
 }
-?>
 
-</div>
-            <!-- END STATISTIC-->
 
-            
+$output .= '</div>';
+
+
+
+                //  include('../footer/footer.php');
           
-            <!-- COPYRIGHT-->
-            <?php
-                  include('../footer/footer.php');
-            ?>
             
-            
+$output .= '     
 <script type="text/javascript">
-            
-    var url = '../action/action_sheet.php';
+
+Display_Sheet_Data();
+function Display_Sheet_Data(){     
+    var url = "../action/action_sheet.php";
     $.ajax({
-      type: 'POST',
+      type: "POST",
       url: url,
-      data:{action:'Display_Sheet_Data'},
+      data:{action:"Display_Sheet_Data"},
       success: function (data) {
-            $('#tbodySheetData').html(data);
+            $("#tbodySheetData").html(data);
       }
-    });       
+    }); 
+}
             
             
-    $(document).on('keyup','#SheetName',function(){
-        let SheetName = $('#SheetName').val();
+    $(document).on("keyup","#SheetName",function(){
+        let SheetName = $("#SheetName").val();
         if(SheetName != ""){
-          $('#MSG_SheetName').empty();
+          $("#MSG_SheetName").empty();
         }else{
-          $('#MSG_SheetName').text("Sheet Name Is Mandatory..").css("color", "red");
+          $("#MSG_SheetName").text("Sheet Name Is Mandatory..").css("color", "red");
         }
     });
     
-    $(document).on('keyup','#SheetRate',function(){
-        let SheetRate = $('#SheetRate').val();
+    $(document).on("keyup","#SheetRate",function(){
+        let SheetRate = $("#SheetRate").val();
         if(SheetRate != ""){
-          $('#MSG_SheetRate').empty();
+          $("#MSG_SheetRate").empty();
         }else{
-          $('#MSG_SheetRate').text("Sheet Rate Is Mandatory..").css("color", "red");
+          $("#MSG_SheetRate").text("Sheet Rate Is Mandatory..").css("color", "red");
         }
     });
 
 // Save Contact Details In Database
-$('#BtnSheetSubmit').click(function (e) {
+$("#BtnSheetSubmit").click(function (e) {
     e.preventDefault();
-    var url = '../action/action_sheet.php';
-      if($('#SheetName').val() != "" && $('#SheetRate').val() != ""){
+    var url = "../action/action_sheet.php";
+      if($("#SheetName").val() != "" && $("#SheetRate").val() != ""){
       var formData = {
-          'SheetName'     : $('#SheetName').val(),
-          'SheetRate'     : $('#SheetRate').val(),
-          'action'        : "Insert_Sheet_Data"
+          "SheetName"     : $("#SheetName").val(),
+          "SheetRate"     : $("#SheetRate").val(),
+          "action"        : "Insert_Sheet_Data"
       };
       $.ajax({
-          type: 'POST',
+          type: "POST",
           url: url,
           data: formData,
           success: function (data) {
             alert(data);
-            $('#CreateSheet')[0].reset();
-            // $(".modal").modal('hide');
+            $("#CreateSheet")[0].reset();
+            // $(".modal").modal("hide");
           }
       });
     }else{
-        if($('#SheetName').val() == ""){
-          $('#MSG_SheetName').text("Sheet Name Is Mandatory..").css("color", "red");
+        if($("#SheetName").val() == ""){
+          $("#MSG_SheetName").text("Sheet Name Is Mandatory..").css("color", "red");
         }
 
-        if($('#SheetRate').val() == ""){
-          $('#MSG_SheetRate').text("Sheet Rate Is Mandatory..").css("color", "red");
+        if($("#SheetRate").val() == ""){
+          $("#MSG_SheetRate").text("Sheet Rate Is Mandatory..").css("color", "red");
         }
         
     }
@@ -171,9 +163,30 @@ $('#BtnSheetSubmit').click(function (e) {
 
 
 
-$('#BtnView').click(function(){
+$("#BtnView").click(function(e){
+    e.preventDefault();
     window.location.href="master_Sheet.php?action=View";
 });
-</script>
+
+$(document).on("click",".clsDelete",function(){
+    var formData = {
+          "sheet_id" : $(this).closest("tr").find("#sheet_id").text(),
+          "action"   : "Delete_Sheet_Data"
+      };
+    $.ajax({
+      type: "POST",
+      url:"../action/action_sheet.php",
+      data: formData,
+      success: function (data) {
+        alert(data);
+        Display_Sheet_Data();
+      }
+    });
+    
+});
+</script>';
+
+echo $output;
+?>
             
    

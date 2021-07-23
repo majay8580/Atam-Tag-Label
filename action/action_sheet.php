@@ -32,13 +32,27 @@ include '../dbConfig/database.php';
                         <td>'.$SrNo.'</td>
                         <td style="width:20%;">'.$row["sheet_name"].'</td>
                         <td>'.$row["sheet_rate"].'</td>
-                        <td>Edit/Delete</td>
+                        <td id="sheet_id" style="display:none;">'.$row["sheet_id"].'</td>
+                        <td>
+                            <i class="fa fa-trash clsDelete" aria-hidden="true" style="cursor:pointer;"></i> &nbsp;&nbsp;
+                            <i class="fa fa-edit clsEdit" aria-hidden="true" style="cursor:pointer;"></i>
+                        </td>
                         </tr>
                         ';   
                         $SrNo = $SrNo+1;
                     }
                 echo $html;
         	}
+    	}
+    	
+    	if($_POST['action'] == "Delete_Sheet_Data"){
+    	    $sql = 'delete FROM `sheet` where sheet_id="'.$_POST["sheet_id"].'"';
+            if(mysqli_query($conn,$sql)){
+               echo "Sheet Deleted Successfully"; 
+            }else{
+                echo "Error In Sheet Delete"; 
+            }
+                
     	}
     }	
 ?>

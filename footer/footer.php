@@ -1,4 +1,4 @@
-
+</div>
                      <!-- END COPYRIGHT-->
         </div>
 
@@ -46,4 +46,18 @@
 
 </html>
 <!-- end document-->
-
+<script type="text/javascript">
+    $('#master_party').click(function(){
+        //e.preventDefault();
+        //alert("Working");
+        var url = '../master/master_Sheet.php';
+        $.ajax({
+        type: 'POST',
+        url: url,
+        success: function (data) {
+            $('#AllData').empty();
+            $('#AllData').html(data);
+        }
+        });
+    });
+</script>

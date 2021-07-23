@@ -22,32 +22,31 @@
                <div class="col-lg-8">
                <div class="card">
                                     <div class="card-header">
-                                        <strong>Create</strong> Coca 
+                                        <strong>Create</strong> Die Cutting 
                                     </div>
                                     <div class="card-body card-block">
-                                        <form id="CreateCoca" name="CreateCoca" method="post" class="form-horizontal" autocomplete="off">
+                                        <form id="CreateDieCutting" name="CreateDieCutting" method="post" class="form-horizontal" autocomplete="off">
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
-                                                    <label class=" form-control-label clsStyle">Coca Name</label>
+                                                    <label class=" form-control-label clsStyle">Die Cutting</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="text" id="CocaName" name="CocaName" autocomplete="off"  placeholder="Enter Coca Name..." class="form-control clsStyle">
-                                                    <span id="MSG_CocaName" class="clsStyle"></span>
-                                               </div>  
-                                            </div>   
-                                            
+                                                     <input type="text" id="DieCuttingName" name="DieCuttingName" autocomplete="off"  placeholder="Enter Die Cutting Name..." class="form-control clsStyle">
+                                                     <span id="MSG_DieCuttingName" class="clsStyle"></span>                                                 
+                                                </div>
+                                            </div>
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
-                                                    <label class=" form-control-label clsStyle">Coca Rate</label>
+                                                    <label class=" form-control-label clsStyle">Rate</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                   <input type="number" id="CocaRate" name="CocaRate" autocomplete="off"  placeholder="Enter Rate..." class="form-control clsStyle">
-                                               <span id="MSG_CocaRate" class="clsStyle"></span>
-                                               </div>  
-                                            </div>  
+                                                    <input type="number" id="DieCuttingRate" name="DieCuttingRate" autocomplete="off"  placeholder="Enter Rate..." class="form-control clsStyle">
+                                                     <span id="MSG_DieCuttingRate" class="clsStyle"></span>                                                
+                                                </div>
+                                            </div>
                                     </div>
                                     <div align="right" class="card-footer">
-                                        <button type="button" class="btn btn-primary btn-sm" id="BtnCocaSubmit">
+                                        <button type="button" class="btn btn-primary btn-sm" id="BtnDieCuttingSubmit">
                                              Save
                                         </button>
                                         <button type="reset" class="btn btn-danger btn-sm" id="BtnView">
@@ -78,7 +77,7 @@ if($action == "View"){
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="tbodyCocaData">
+                                        <tbody id="tbodyDieCuttingData">
                                           
                                         </tbody>
                                     </table>
@@ -101,46 +100,47 @@ if($action == "View"){
 ?>
 <script type="text/javascript">
 
-    Display_Coca_Data();
-    function Display_Coca_Data(){
-        var url = '../action/action_coca.php';
-        $.ajax({
-          type: 'POST',
-          url: url,
-          data:{action:'Display_Coca_Data'},
-          success: function (data) {
-                $('#tbodyCocaData').html(data);
-          }
-        });  
-    }
+Display_DieCutting_Data();
+
+function Display_DieCutting_Data(){
+    var url = '../action/action_die_cutting.php';
+    $.ajax({
+      type: 'POST',
+      url: url,
+      data:{action:'Display_DieCutting_Data'},
+      success: function (data) {
+            $('#tbodyDieCuttingData').html(data);
+      }
+    });    
+}
     
-    $(document).on('keyup','#CocaName',function(){
-        let CocaName = $('#CocaName').val();
-        if(CocaName != ""){
-          $('#MSG_CocaName').empty();
+    $(document).on('keyup','#DieCuttingName',function(){
+        let DieCuttingName = $('#DieCuttingName').val();
+        if(DieCuttingName != ""){
+          $('#MSG_DieCuttingName').empty();
         }else{
-          $('#MSG_CocaName').text("Coca Name Is Mandatory....").css("color", "red");
+          $('#MSG_DieCuttingName').text("Die Cutting Name Is Mandatory....").css("color", "red");
         }
     });
     
-    $(document).on('keyup','#CocaRate',function(){
-        let CocaRate = $('#CocaRate').val();
-        if(CocaRate != ""){
-          $('#MSG_CocaRate').empty();
+    $(document).on('keyup','#DieCuttingRate',function(){
+        let DieCuttingRate = $('#DieCuttingRate').val();
+        if(DieCuttingRate != ""){
+          $('#MSG_DieCuttingRate').empty();
         }else{
-          $('#MSG_CocaRate').text("Coca Rate Is Mandatory....").css("color", "red");
+          $('#MSG_DieCuttingRate').text("Die Cutting Rate Is Mandatory....").css("color", "red");
         }
     });
 
 // Save Contact Details In Database
-$('#BtnCocaSubmit').click(function (e) {
+$('#BtnDieCuttingSubmit').click(function (e) {
     e.preventDefault();
-    var url = '../action/action_coca.php';
-    if($('#CocaName').val() != "" && $('#CocaRate').val() != ""){
+    var url = '../action/action_die_cutting.php';
+    if($('#SizeWidth').val() != "" && $('#SizeHeight').val() != ""){
           var formData = {
-            'CocaName'     : $('#CocaName').val(),
-            'CocaRate'    : $('#CocaRate').val(),
-            'action'        : "Insert_Coca_Data"
+            'DieCuttingName'    : $('#DieCuttingName').val(),
+            'DieCuttingRate'    : $('#DieCuttingRate').val(),
+            'action'            : "Insert_DieCutting_Data"
          };
         $.ajax({
           type: 'POST',
@@ -148,41 +148,40 @@ $('#BtnCocaSubmit').click(function (e) {
           data: formData,
           success: function (data) {
             alert(data);
-            $('#CreateCoca')[0].reset();
+            $('#CreateDieCutting')[0].reset();
           }
         });
     }else{
-        if($('#SizeWidth').val() == ""){
-          $('#MSG_CocaName').text("Coca Name Is Mandatory..").css("color", "red");
+        if($('#DieCuttingName').val() == ""){
+          $('#MSG_DieCuttingName').text("Die Cutting Name Is Mandatory..").css("color", "red");
         }
-        if($('#CocaRate').val() == ""){
-          $('#MSG_CocaRate').text("Coca Rate Is Mandatory..").css("color", "red");
+        if($('#DieCuttingRate').val() == ""){
+          $('#MSG_DieCuttingRate').text("Die Cutting Rate Is Mandatory..").css("color", "red");
         }
         
     }
 });
 
 $('#BtnView').click(function(){
-    window.location.href="master_coca.php?action=View";
+    window.location.href="master_die_cutting.php?action=View";
 });
 
 $(document).on('click','.clsDelete',function(){
     var formData = {
-          'coca_id' : $(this).closest('tr').find('#coca_id').text(),
-          'action'  : "Delete_Coca_Data"
+          'die_cutting_Id' : $(this).closest('tr').find('#die_cutting_Id').text(),
+          'action'         : "Delete_DieCutting_Data"
       };
     $.ajax({
       type: 'POST',
-      url:'../action/action_coca.php',
+      url:'../action/action_die_cutting.php',
       data: formData,
       success: function (data) {
         alert(data);
-        Display_Coca_Data();
+        Display_DieCutting_Data();
       }
     });
     
 });
-
 
 </script>
    

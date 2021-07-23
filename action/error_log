@@ -31,3 +31,9 @@
 [12-Jul-2021 12:24:20 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 132120984 bytes) in /home4/marsonein/public_html/atamtag/action/action_party.php on line 38
 [12-Jul-2021 12:24:50 UTC] PHP Parse error:  syntax error, unexpected end of file in /home4/marsonein/public_html/atamtag/action/action_party.php on line 57
 [12-Jul-2021 12:25:46 UTC] PHP Parse error:  syntax error, unexpected end of file in /home4/marsonein/public_html/atamtag/action/action_party.php on line 57
+[19-Jul-2021 09:04:54 UTC] PHP Warning:  mysqli_connect(): (HY000/1040): Too many connections in /home4/marsonein/public_html/atamtag/dbConfig/database.php on line 8
+[19-Jul-2021 09:04:54 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home4/marsonein/public_html/atamtag/action/action_size.php on line 22
+[19-Jul-2021 09:07:57 UTC] PHP Warning:  mysqli_connect(): (08004/1040): Too many connections in /home4/marsonein/public_html/atamtag/dbConfig/database.php on line 8
+[19-Jul-2021 09:07:57 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home4/marsonein/public_html/atamtag/action/action_size.php on line 22
+[20-Jul-2021 05:55:32 UTC] PHP Warning:  mysqli_connect(): (HY000/1040): Too many connections in /home4/marsonein/public_html/atamtag/dbConfig/database.php on line 8
+[20-Jul-2021 05:55:32 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home4/marsonein/public_html/atamtag/action/action_labour_charges.php on line 22
