@@ -78,7 +78,7 @@ if($_SESSION['username'] == ""){
                     <div class="header__navbar" >
                         <ul class="list-unstyled">
                             <li class="has-sub">
-                                <a href="../dashboard.php">
+                                <a href="dashboard.php">
                                     <i class="fas fa-tachometer-alt"></i>Dashboard
                                     <span class="bot-line"></span>
                                 </a>
@@ -89,11 +89,11 @@ if($_SESSION['username'] == ""){
                                     <i class="fas fa-shopping-basket"></i>
                                     <span class="bot-line"></span>Master</a>
                                      <ul class="header3-sub-list list-unstyled">
-                                    <li id="master_party">
+                                    <li id="create_master_party">
                                         <a href="#">Party</a>
                                     </li>
-                                    <li>
-                                        <a href="../master/master_Sheet.php">Sheet</a>
+                                    <li id="create_master_sheet">
+                                        <a href="#">Sheet</a>
                                     </li>
                                     <li>
                                         <a href="../master/master_Size.php">Sheet Size</a>

@@ -23,6 +23,7 @@ include '../dbConfig/database.php';
             if($result = mysqli_query($conn,$sql)){
                     //create an array
                    // $CompanyArray = array();
+                   $html = '';
                     while($row =mysqli_fetch_assoc($result))
                     {  
                         
@@ -34,7 +35,7 @@ include '../dbConfig/database.php';
                         <td>'.$row["sheet_rate"].'</td>
                         <td id="sheet_id" style="display:none;">'.$row["sheet_id"].'</td>
                         <td>
-                            <i class="fa fa-trash clsDelete" aria-hidden="true" style="cursor:pointer;"></i> &nbsp;&nbsp;
+                            <i class="fa fa-trash clsDeleteSheet" aria-hidden="true" style="cursor:pointer;"></i> &nbsp;&nbsp;
                             <i class="fa fa-edit clsEdit" aria-hidden="true" style="cursor:pointer;"></i>
                         </td>
                         </tr>

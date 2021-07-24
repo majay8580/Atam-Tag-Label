@@ -26,16 +26,11 @@
 <!-- ../Vendor JS       -->
 <script src="../vendor/slick/slick.min.js">
 </script>
-<!-- <script src="../vendor/wow/wow.min.js"></script> -->
-<!-- <script src="../vendor/animsition/animsition.min.js"></script> -->
-<!-- <script src="../vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"> -->
 </script>
 <script src="../vendor/counter-up/jquery.waypoints.min.js"></script>
 <script src="../vendor/counter-up/jquery.counterup.min.js">
 </script>
-<!-- <script src="../vendor/circle-progress/circle-progress.min.js"></script> -->
 <script src="../vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-<!-- <script src="../vendor/chartjs/Chart.bundle.min.js"></script> -->
 <script src="../vendor/select2/select2.min.js">
 </script>
 
@@ -47,13 +42,60 @@
 </html>
 <!-- end document-->
 <script type="text/javascript">
-    $('#master_party').click(function(){
-        //e.preventDefault();
-        //alert("Working");
+    $('#create_master_party').click(function(){
+        var formData = {
+          "action"   : "Create"
+        };
+        var url = '../master/master_party.php';
+        $.ajax({
+        type: 'POST',
+        url: url,
+        action:formData,
+        success: function (data) {
+            $('#AllData').empty();
+            $('#AllData').html(data);
+        }
+        });
+    });
+    $(document).on('click','#view_master_party',function(){
+        var formData = {
+          'action'   : 'View'
+        };
+        var url = '../report/report_party.php';
+        $.ajax({
+        type: 'POST',
+        url: url,
+        action:formData,
+        success: function (data) {
+            $('#AllData').empty();
+            $('#AllData').html(data);
+        }
+        });
+    });
+    $('#create_master_sheet').click(function(){
+        var formData = {
+          "action"   : "Create"
+        };
         var url = '../master/master_Sheet.php';
         $.ajax({
         type: 'POST',
         url: url,
+        action:formData,
+        success: function (data) {
+            $('#AllData').empty();
+            $('#AllData').html(data);
+        }
+        });
+    });
+    $(document).on('click','#view_master_sheet',function(){
+        var formData = {
+          'action'   : 'View'
+        };
+        var url = '../report/report_sheet.php';
+        $.ajax({
+        type: 'POST',
+        url: url,
+        action:formData,
         success: function (data) {
             $('#AllData').empty();
             $('#AllData').html(data);

@@ -5,69 +5,8 @@
             $output ='';
            // $action = '';
             //echo '<script> alert("Hello")</script>';
-            if(!empty($_POST['action'])){
-                 $action = $_POST['action'];
-            }
-            else{
-                 	$action = "Create"; 
-            } 
         
             $output = '<div class="container createform">';
-        
-        if($action == "Create"){
-        
-                   
-                   
-          $output .= '<div class="row">
-                       <div class="col-lg-2">
-                    </div>
-               <div class="col-lg-8">
-               <div class="card">
-                                    <div class="card-header">
-                                        <strong>Create</strong> Sheet 
-                                    </div>
-                                    <div class="card-body card-block">
-                                        <form  id="CreateSheet" name="CreateSheet" method="post" class="form-horizontal" autocomplete="off">
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label clsStyle">Sheet Name</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <input type="text" id="SheetName" name="SheetName" autocomplete="off"  placeholder="Enter Sheet Name..." class="form-control clsStyle">
-                                                    <span id="MSG_SheetName" class="clsStyle"></span>
-                                                </div>
-                                            </div>
-
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label  class=" form-control-label clsStyle">Sheet Rate</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <input type="number" id="SheetRate" name="SheetRate" placeholder="Enter Sheet Rate..." class="form-control clsStyle">
-                                                    <span id="MSG_SheetRate" class="clsStyle"></span>
-                                                </div>
-                                            </div>
-                                    </div>
-                                    <div align="right" class="card-footer">
-                                        <button type="submit" class="btn btn-primary btn-sm" id="BtnSheetSubmit">
-                                          Save
-                                        </button>
-                                        <button type="button" class="btn btn-danger btn-sm" id="view_master_sheet">
-                                             View
-                                        </button>
-                                         
-                                    </div>
-                                      </form>
-
-                                </div>
-                                <div class="col-lg-2">
-</div>
-</div>
-</div>';
-
-}
-if($action == "View"){
-    
 
 
   $output .= '<div class="table-responsive m-b-40">
@@ -86,8 +25,6 @@ if($action == "View"){
                                         </tbody>
                                     </table>
                                 </div>';
-
-}
 
 
 $output .= '</div>';
@@ -171,7 +108,7 @@ $("#BtnView").click(function(e){
     window.location.href="master_Sheet.php?action=View";
 });
 
-$(document).on("click",".clsDelete",function(){
+$(document).on("click",".clsDeleteSheet",function(){
     var formData = {
           "sheet_id" : $(this).closest("tr").find("#sheet_id").text(),
           "action"   : "Delete_Sheet_Data"

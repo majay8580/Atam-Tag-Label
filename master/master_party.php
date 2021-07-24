@@ -1,24 +1,15 @@
 
         <!-- HEADER DESKTOP-->
         <?php
-             include('../header/header.php');
-             if(!empty($_GET['action'])){
-            	  $action = $_GET['action'];
-             }else{
-                	$action = "Create"; 
-             } 
-        ?>
-               <!-- PAGE CONTENT-->
-               <div class="container createform">
-        <?php
-        
-        
-        if($action == "Create"){
-        
-        ?>
+           // $output .= include('../header/header.php'); 
+
+             $output ='';
+
+             $output ='<div class="container createform">';
+
                    
                    
-                   <div class="row">
+            $output .= ' <div class="row">
                        <div class="col-lg-2">
                 </div>
                <div class="col-lg-8">
@@ -105,7 +96,7 @@
                                         <button type="button" class="btn btn-primary btn-sm" id="BtnPartySubmit">
                                             Save
                                         </button>
-                                        <button type="reset" class="btn btn-danger btn-sm" id="BtnView">
+                                        <button type="reset" class="btn btn-danger btn-sm" id="view_master_party">
                                           View
                                         </button>
                                     </div>
@@ -114,135 +105,96 @@
                                 <div class="col-lg-2">
 </div>
 </div>
-</div>
-<?php
-}
-if($action == "View"){
-    
-?>
-
-                 
-                    <!-- DATA TABLE-->
-                    <div class="table-responsive m-b-40">
-                                    <table class="table table-borderless table-data3">
-                                        <thead>
-                                            <tr>
-                                                <th>S.No</th>
-                                                <th>Party Name</th>
-                                                <th>Mobile No</th>
-                                                <th>Email id</th>
-                                                <th>Address</th>
-                                                <th>State</th>
-                                                <th>City</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="tbodyPartyData">
-
-                                          
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- END DATA TABLE-->
+</div>';
 
 
-<?php
-}
-?>
+$output .= '</div>';
 
-</div>
-            <!-- END STATISTIC-->
-
-            
-          
-    <!-- COPYRIGHT-->
-    <?php
-          include('../footer/footer.php');
-    ?>
-            
+//$output .= include('../footer/footer.php');
+$output .= '       
 <script type="text/javascript">
 
     Display_Party_Data();
     function Display_Party_Data(){  
-        var url = '../action/action_party.php';
+        var url = "../action/action_party.php";
         $.ajax({
-          type: 'POST',
+          type: "POST",
           url: url,
-          data:{action:'Display_Party_Data'},
+          data:{action:"Display_Party_Data"},
           success: function (data) {
-                $('#tbodyPartyData').html(data);
+                $("#tbodyPartyData").html(data);
           }
         });       
     }
             
             
-    $(document).on('keyup','#PartyName',function(){
-        let PartyName = $('#PartyName').val();
+    $(document).on("keyup","#PartyName",function(){
+        let PartyName = $("#PartyName").val();
         if(PartyName != ""){
-          $('#MSG_PartyName').empty();
+          $("#MSG_PartyName").empty();
         }else{
-          $('#MSG_PartyName').text("Party Name Is Mandatory..").css("color", "red");
+          $("#MSG_PartyName").text("Party Name Is Mandatory..").css("color", "red");
         }
     });
 
 // Save Contact Details In Database
-$('#BtnPartySubmit').click(function (e) {
+$("#BtnPartySubmit").click(function (e) {
     e.preventDefault();
-    var url = '../action/action_party.php';
-   // if($('#CompanyName').val() != "" && $('#State').val() != "" && $('#PinCode').val() != "" && $('#State').val() !="" && $('#City').val() != "" && $('#RefferedBy').val() != "" && $('#Group').val() != "" && $('#Industry').val() != ""){
-      if($('#PartyName').val() != ""){
+    var url = "../action/action_party.php";
+   // if($("#CompanyName").val() != "" && $("#State").val() != "" && $("#PinCode").val() != "" && $("#State").val() !="" && $("#City").val() != "" && $("#RefferedBy").val() != "" && $("#Group").val() != "" && $("#Industry").val() != ""){
+      if($("#PartyName").val() != ""){
       var formData = {
-          'PartyName'     : $('#PartyName').val(),
-          'PartyMobileNo' : $('#PartyMobileNo').val(),
-          'PartyEmailId'  : $('#PartyEmailId').val(),
-          'PartyAddress'  : $('#PartyAddress').val(),
-          'PartyState'    : $('#PartyState').val(),
-          'PartyCity'     : $('#PartyCity').val(),
-          'action'        : "Insert_Party_Data"
+          "PartyName"     : $("#PartyName").val(),
+          "PartyMobileNo" : $("#PartyMobileNo").val(),
+          "PartyEmailId"  : $("#PartyEmailId").val(),
+          "PartyAddress"  : $("#PartyAddress").val(),
+          "PartyState"    : $("#PartyState").val(),
+          "PartyCity"     : $("#PartyCity").val(),
+          "action"        : "Insert_Party_Data"
       };
       $.ajax({
-          type: 'POST',
+          type: "POST",
           url: url,
           data: formData,
           success: function (data) {
             alert(data);
-            $('#CreateParty')[0].reset();
-            // $(".modal").modal('hide');
+            $("#CreateParty")[0].reset();
+            // $(".modal").modal("hide");
           }
       });
     }else{
-        if($('#PartyName').val() == ""){
-          $('#MSG_PartyName').text("Party Name Is Mandatory..").css("color", "red");
+        if($("#PartyName").val() == ""){
+          $("#MSG_PartyName").text("Party Name Is Mandatory..").css("color", "red");
         }
 
-        // // if($('#Email').val() == ""){
-        // //   $('#MSG_Email').text("Email Is Mandatory..").css("color", "red");
+        // // if($("#Email").val() == ""){
+        // //   $("#MSG_Email").text("Email Is Mandatory..").css("color", "red");
         // // }
 
-        // if($('#PinCode').val() == ""){
-        //   $('#MSG_PinCode').text("PinCode Is Mandatory..").css("color", "red");
+        // if($("#PinCode").val() == ""){
+        //   $("#MSG_PinCode").text("PinCode Is Mandatory..").css("color", "red");
         // }
 
-        // // if($('#GSTNumber').val() == ""){
-        // //   $('#MSG_GSTNumber').text("GST Number Is Mandatory..").css("color", "red");
+        // // if($("#GSTNumber").val() == ""){
+        // //   $("#MSG_GSTNumber").text("GST Number Is Mandatory..").css("color", "red");
         // // }  
         
-        // if($('#State').val() == ""){
-        //     $('#MSG_State').text("State Is Mandatory..").css("color", "red");
+        // if($("#State").val() == ""){
+        //     $("#MSG_State").text("State Is Mandatory..").css("color", "red");
         // }
-        // if($('#City').val() == ""){
-        //     $('#MSG_City').text("City Name Is Mandatory..").css("color", "red");
+        // if($("#City").val() == ""){
+        //     $("#MSG_City").text("City Name Is Mandatory..").css("color", "red");
         // } 
-        // if($('#RefferedBy').val() == ""){
-        //     $('#MSG_RefferedBy').text("RefferedBy Is Mandatory..").css("color", "red");
+        // if($("#RefferedBy").val() == ""){
+        //     $("#MSG_RefferedBy").text("RefferedBy Is Mandatory..").css("color", "red");
         // }
         
-        // if($('#Group').val() == ""){
-        //     $('#MSG_Group').text("Group Is Mandatory..").css("color", "red");
+        // if($("#Group").val() == ""){
+        //     $("#MSG_Group").text("Group Is Mandatory..").css("color", "red");
         // }
         
-        // if($('#Industry').val() == ""){
-        //     $('#MSG_Industry').text("Industry Is Mandatory..").css("color", "red");
+        // if($("#Industry").val() == ""){
+        //     $("#MSG_Industry").text("Industry Is Mandatory..").css("color", "red");
         // }
         
     }
@@ -250,19 +202,19 @@ $('#BtnPartySubmit').click(function (e) {
 
 
 
-$('#BtnView').click(function(){
+$("#BtnView").click(function(){
     window.location.href="master_party.php?action=View";
 });
 
 
-$(document).on('click','.clsDelete',function(){
+$(document).on("click",".clsDelete",function(){
     var formData = {
-          'accountInsertId' : $(this).closest('tr').find('#accountInsertId').text(),
-          'action'          : "Delete_Party_Data"
+          "accountInsertId" : $(this).closest("tr").find("#accountInsertId").text(),
+          "action"          : "Delete_Party_Data"
       };
     $.ajax({
-      type: 'POST',
-      url:'../action/action_party.php',
+      type: "POST",
+      url:"../action/action_party.php",
       data: formData,
       success: function (data) {
         alert(data);
@@ -271,6 +223,9 @@ $(document).on('click','.clsDelete',function(){
     });
     
 });
-</script>
+</script>';
+
+echo $output;
+?>
             
    

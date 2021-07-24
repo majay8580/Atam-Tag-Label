@@ -3,6 +3,7 @@ session_start();
 
 include '../dbConfig/database.php';
 $SrNo = 1;
+$html = '';
     if(isset($_POST['action'])){
     	//Insert Company Data In Sql Start 
     	if($_POST['action'] == "Insert_Party_Data"){

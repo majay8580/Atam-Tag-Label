@@ -14,7 +14,7 @@ if(isset($_POST["login"])){
          $_SESSION['email']    = $data['email'];
          $_SESSION['phone_no'] = $data['phone_no'];
          $_SESSION['id']       = $data['id'];
-         header("location:dashboard.php");
+         header("location:master/dashboard.php");
     // }
     }else{
      echo "Check Username & Password";
